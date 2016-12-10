@@ -53,4 +53,9 @@ test_script:
   # doesn't really work.
   #
   - "%CMD_IN_ENV% conda build .\\ci\\conda --quiet"
+  # move conda package to /dist
+  - cmd: 'copy /Y %PYTHON%\conda-bld\%SUBDIR%\*.bz2 dist || cmd /c "exit /b 0"'
 
+artifacts:
+  - path: dist\*
+    name: packages
