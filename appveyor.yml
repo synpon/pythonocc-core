@@ -54,7 +54,8 @@ test_script:
   #
   - "%CMD_IN_ENV% conda build .\\ci\\conda --quiet"
   # move conda package to /dist
-  - cmd: 'copy /Y %PYTHON%\conda-bld\win-%PYTHON_ARCH%\*.bz2 dist || cmd /c "exit /b 0"'
+  - cmd: 'mkdir dist'
+  - cmd: 'copy /Y %PYTHON%\conda-bld\win-%PYTHON_ARCH%\pythonocc*.bz2 dist || cmd /c "exit /b 0"'
 
 artifacts:
   - path: dist\*
